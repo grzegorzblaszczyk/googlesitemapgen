@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.dom4j.Document;
@@ -25,8 +23,7 @@ public class GoogleSitemapGenerator {
 	public GoogleSitemapGenerator() {
 	}
 
-	public String generateSitemap(String host, List<String> links,
-			Date lastMod, ChangeFreq changeFreq) {
+	public String generateSitemap(String host, List<Link> links) {
 
 		Document doc = DocumentHelper.createDocument();
 
@@ -42,23 +39,33 @@ public class GoogleSitemapGenerator {
 				"xsi:schemaLocation",
 				"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd");
 
-		for (String link : links) {
+		for (Link link : links) {
 
 			Element url = urlset.addElement(new QName("url", defaultNamespace));
 
 			Element loc = url.addElement("loc");
-			loc.setText(host + link);
+			loc.setText(host + link.getUri());
+			
 			Element lastmod = url.addElement("lastmod");
 
-			String formattedDate = formatter.format(lastMod);
+			String formattedDate = formatter.format(link.getLastModified());
 			formattedDate = formattedDate.subSequence(0,
 					formattedDate.length() - 2)
 					+ ":"
 					+ formattedDate.substring(formattedDate.length() - 2);
-			lastmod.setText(formatter.format(lastMod));
+			lastmod.setText(formattedDate);
 
-			Element changefreq = url.addElement("changefreq");
-			changefreq.setText(changeFreq.name());
+			Double priorityValue = link.getPriority();
+			if (priorityValue != null) {
+				Element priority = url.addElement("priority");
+				priority.setText(priorityValue.toString());
+			}
+			
+			ChangeFreq changeFrequency = link.getChangeFreq();
+			if (changeFrequency != null) {
+				Element changefreq = url.addElement("changefreq");
+				changefreq.setText(link.getChangeFreq().name());
+			}
 		}
 
 		Writer out = new StringWriter();

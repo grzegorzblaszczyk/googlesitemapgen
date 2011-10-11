@@ -23,18 +23,28 @@ public class GoogleSitemapGeneratorTest {
 
 	private GoogleSitemapGenerator generator;
 
-	List<String> links;
+	List<Link> links;
 	String host;
 	
 	@Before
 	public void setUp() {
 		generator = new GoogleSitemapGenerator();
 		
-		links = new ArrayList<String>();
-		links.add("/firstUri");
-		links.add("/second-very-long-uri");
-		links.add("/third/deep/uri");
-		links.add("/uri?withParams=yes");
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 2011);
+		cal.set(Calendar.MONTH, Calendar.OCTOBER);
+		cal.set(Calendar.DATE, 11);
+		cal.set(Calendar.HOUR_OF_DAY, 15);
+		cal.set(Calendar.MINUTE, 20);
+		cal.set(Calendar.SECOND, 41);
+		cal.set(Calendar.MILLISECOND, 0);
+		cal.setTimeZone(TimeZone.getTimeZone("Europe/Warsaw"));
+		
+		links = new ArrayList<Link>();
+		links.add(new Link("/firstUri", cal.getTime(), null, ChangeFreq.always));
+		links.add(new Link("/second-very-long-uri", cal.getTime(), 0.1, null));
+		links.add(new Link("/third/deep/uri", cal.getTime(), null, null));
+		links.add(new Link("/uri?withParams=yes", cal.getTime(), null, null));
 		
 		host = "http://www.somesite.com";
 	}
@@ -55,7 +65,7 @@ public class GoogleSitemapGeneratorTest {
 		cal.set(Calendar.MILLISECOND, 0);
 		cal.setTimeZone(TimeZone.getTimeZone("Europe/Warsaw"));
 		
-		assertEquals(expectedContent, generator.generateSitemap(host, links, cal.getTime(), ChangeFreq.always));
+		assertEquals(expectedContent, generator.generateSitemap(host, links));
 
 	}
 
