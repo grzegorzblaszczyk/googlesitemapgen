@@ -1,8 +1,8 @@
-package com.goodylabs.sitemapgen.impl;
+package com.goodylabs.sitemapgen;
 
 import java.util.Date;
 
-import com.goodylabs.sitemapgen.impl.enums.ChangeFreq;
+import com.goodylabs.sitemapgen.enums.ChangeFreq;
 
 public class Link {
 	

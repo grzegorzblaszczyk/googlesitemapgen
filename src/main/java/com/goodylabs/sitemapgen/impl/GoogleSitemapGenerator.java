@@ -14,8 +14,9 @@ import org.dom4j.QName;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
+import com.goodylabs.sitemapgen.Link;
 import com.goodylabs.sitemapgen.SitemapGenerator;
-import com.goodylabs.sitemapgen.impl.enums.ChangeFreq;
+import com.goodylabs.sitemapgen.enums.ChangeFreq;
 
 public class GoogleSitemapGenerator implements SitemapGenerator {
 

@@ -17,10 +17,10 @@ import java.util.TimeZone;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.goodylabs.sitemapgen.Link;
 import com.goodylabs.sitemapgen.SitemapGenerator;
+import com.goodylabs.sitemapgen.enums.ChangeFreq;
 import com.goodylabs.sitemapgen.impl.GoogleSitemapGenerator;
-import com.goodylabs.sitemapgen.impl.Link;
-import com.goodylabs.sitemapgen.impl.enums.ChangeFreq;
 
 public class GoogleSitemapGeneratorTest {
 
