@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>http://www.somesite.com/firstUri</loc>
+    <lastmod>2011-10-11T15:20:41+0200</lastmod>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://www.somesite.com/second-very-long-uri</loc>
+    <lastmod>2011-10-11T15:20:41+0200</lastmod>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://www.somesite.com/third/deep/uri</loc>
+    <lastmod>2011-10-11T15:20:41+0200</lastmod>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://www.somesite.com/uri?withParams=yes</loc>
+    <lastmod>2011-10-11T15:20:41+0200</lastmod>
+    <changefreq>always</changefreq>
+  </url>
+</urlset>
