@@ -1,4 +1,4 @@
-package com.goodylabs.sitemapgen;
+package com.goodylabs.sitemapgen.impl;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -14,15 +14,20 @@ import org.dom4j.QName;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
-import com.goodylabs.sitemapgen.enums.ChangeFreq;
+import com.goodylabs.sitemapgen.SitemapGenerator;
+import com.goodylabs.sitemapgen.impl.enums.ChangeFreq;
 
-public class GoogleSitemapGenerator {
+public class GoogleSitemapGenerator implements SitemapGenerator {
 
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
 	public GoogleSitemapGenerator() {
 	}
 
+	/* (non-Javadoc)
+	 * @see com.goodylabs.sitemapgen.impl.SitemapGenerator#generateSitemap(java.lang.String, java.util.List)
+	 */
+	@Override
 	public String generateSitemap(String host, List<Link> links) {
 
 		Document doc = DocumentHelper.createDocument();
