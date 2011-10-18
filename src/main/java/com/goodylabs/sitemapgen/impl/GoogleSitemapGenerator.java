@@ -25,9 +25,6 @@ public class GoogleSitemapGenerator implements SitemapGenerator {
 	public GoogleSitemapGenerator() {
 	}
 
-	/* (non-Javadoc)
-	 * @see com.goodylabs.sitemapgen.impl.SitemapGenerator#generateSitemap(java.lang.String, java.util.List)
-	 */
 	@Override
 	public String generateSitemap(String host, List<Link> links) {
 
